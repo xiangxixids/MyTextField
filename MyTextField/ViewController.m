@@ -32,7 +32,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+// notice: uiview的移动, 需要在这里进行, 而不能够在textFieldDidBeginEditing 进行, 原因是, 无法获取键盘高度, 只能写死.
+// 这个方法执行晚于textFieldDidBeginEditing
+// 同时, 利用_tempTextField 将当前textField 传递过来, 进行调整, 这样无论是哪一个textField 都可以进行完美移动.
 - (void)keyboardWillShow:(NSNotification *)note{
     
     NSDictionary *info = [note userInfo];
